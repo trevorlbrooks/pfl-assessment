@@ -18,7 +18,7 @@ namespace pfl_assessment.Models
         private static String Authorization;
         private static String ApiUrl;
 
-        private static string ProductsEndpoint = "products";
+        
 
         private ApiAccessor() {
             ApiKey = ConfigurationManager.AppSettings["api-key"];
@@ -36,25 +36,13 @@ namespace pfl_assessment.Models
                 new AuthenticationHeaderValue("Basic",  Authorization);
         }
 
-        public async Task<List<Product>> GetProducts() {
-            List<Product> products = new List<Product>();
-            HttpResponseMessage response = await Client.GetAsync(ProductsEndpoint + "?apikey=" + ApiKey);
+        public async Task<T> Get<T>(String endpoint, List<String> queryParams) {
+            HttpResponseMessage response = await Client.GetAsync(endpoint + "?apikey=" + ApiKey);
             if (response.IsSuccessStatusCode)
             {
-                JsonResponse<List<Product>> parsedResponse = await response.Content.ReadAsAsync<JsonResponse<List<Product>>>();
-                products = parsedResponse.Results.Data;
+                return await response.Content.ReadAsAsync<T>();
             }
-            return products;
-        }
-
-        public async Task<String> GetProductsJson()
-        {
-            HttpResponseMessage response = await Client.GetAsync(ProductsEndpoint + "?apikey=" + ApiKey);
-            if (response.IsSuccessStatusCode)
-            {
-                return await response.Content.ReadAsStringAsync();
-            }
-            return "fail";
+            return default(T);
         }
     }
 }

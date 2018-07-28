@@ -11,10 +11,8 @@ namespace pfl_assessment.Controllers
     {
         public async Task<ActionResult> Index()
         {
-            ApiAccessor api = ApiAccessor.Singleton;
-            List<Product> productList = await api.GetProducts();
+            List<Product> productList = await ProductsApi.GetProducts();
             ViewBag.Message = productList.Count + "<br/>" + productList.ToString();
-            //ViewBag.Message = await ApiAccessor.Singleton.GetProductsJson();
             return View();
         }
 

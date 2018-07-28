@@ -159,11 +159,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ApiAccessor.cs" />
-    <Compile Include="Models\JsonResponse.cs" />
-    <Compile Include="Models\Products\ProductList.cs" />
+    <Compile Include="Models\Json\JsonResponse.cs" />
+    <Compile Include="Models\ProductsApi.cs" />
     <Compile Include="Models\Products\DeliveredPrice.cs" />
     <Compile Include="Models\Products\Product.cs" />
-    <Compile Include="Models\ResultsNode.cs" />
+    <Compile Include="Models\Json\ResultsNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
