@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Configuration;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 
 using pfl_assessment.Models.Products;
 
@@ -14,24 +14,31 @@ namespace pfl_assessment.Models
     {
         public static readonly ApiAccessor Singleton = new ApiAccessor();
         private static HttpClient Client;
+        private static String ApiKey;
+        private static String Authorization;
+        private static String ApiUrl;
 
         private static string ProductsEndpoint = "products";
 
         private ApiAccessor() {
+            ApiKey = ConfigurationManager.AppSettings["api-key"];
+            byte[] authPlaintext = Encoding.ASCII.GetBytes(ConfigurationManager.AppSettings["api-user"] + ":" + ConfigurationManager.AppSettings["api-pass"]);
+            Authorization = Convert.ToBase64String(authPlaintext);
+            ApiUrl = ConfigurationManager.ConnectionStrings["api-url"].ConnectionString;
+
             Client = new HttpClient();
-            Client.BaseAddress = new Uri("https://testapi.pfl.com/");
+            Client.BaseAddress = new Uri(ApiUrl);
             Client.DefaultRequestHeaders.Accept.Clear();
             Client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
-            //TODO: LOAD IN KEY FROM SECRET MANAGER https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-2.1&tabs=windows
+            
             Client.DefaultRequestHeaders.Authorization = 
-                new AuthenticationHeaderValue("Basic",  "");
+                new AuthenticationHeaderValue("Basic",  Authorization);
         }
 
         public async Task<List<Product>> GetProducts() {
             List<Product> products = new List<Product>();
-            //TODO: LOAD IN KEY FROM SECRET MANAGER
-            HttpResponseMessage response = await Client.GetAsync(ProductsEndpoint + "?apikey=");
+            HttpResponseMessage response = await Client.GetAsync(ProductsEndpoint + "?apikey=" + ApiKey);
             if (response.IsSuccessStatusCode)
             {
                 JsonResponse<List<Product>> parsedResponse = await response.Content.ReadAsAsync<JsonResponse<List<Product>>>();
@@ -42,7 +49,7 @@ namespace pfl_assessment.Models
 
         public async Task<String> GetProductsJson()
         {
-            HttpResponseMessage response = await Client.GetAsync(ProductsEndpoint + "?apikey=136085");
+            HttpResponseMessage response = await Client.GetAsync(ProductsEndpoint + "?apikey=" + ApiKey);
             if (response.IsSuccessStatusCode)
             {
                 return await response.Content.ReadAsStringAsync();
