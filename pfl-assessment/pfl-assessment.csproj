@@ -162,6 +162,8 @@
     <Compile Include="Models\Json\Error.cs" />
     <Compile Include="Models\Json\JsonResponse.cs" />
     <Compile Include="Models\Json\Meta.cs" />
+    <Compile Include="Models\Json\Products\FieldPrompt.cs" />
+    <Compile Include="Models\Json\Products\TemplateField.cs" />
     <Compile Include="Models\ProductsApi.cs" />
     <Compile Include="Models\Json\Products\DeliveredPrice.cs" />
     <Compile Include="Models\Json\Products\Product.cs" />
@@ -233,7 +235,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
