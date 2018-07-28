@@ -5,9 +5,9 @@ using System.Web;
 
 namespace pfl_assessment.Models.Json
 {
-    public class ResultsNode<T>
+    public class Error
     {
-        public T Data { get; set; }
-        public List<Error> Errors { get; set; }
+        public string DataElement { get; set; }
+        public List<String> DataElementErrors { get; set; }
     }
 }

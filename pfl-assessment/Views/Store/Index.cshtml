@@ -1,7 +1,14 @@
-﻿@{
+﻿@using pfl_assessment.Models.Json.Products;
+@{
     ViewData["Title"] = "Store";
 }
 
 <div class="row">
     <h2>Store Stub</h2>
+    <div class="d-md-flex flex-wrap">
+        @foreach (var product in (List<Product>)ViewData["products"])
+        {
+            @Html.Partial("_ProductTile", product)
+        }
+    </div>
 </div>

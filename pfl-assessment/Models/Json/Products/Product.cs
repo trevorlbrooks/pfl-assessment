@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace pfl_assessment.Models.Products
+namespace pfl_assessment.Models.Json.Products
 {
     public class Product
     {
@@ -16,5 +16,16 @@ namespace pfl_assessment.Models.Products
         public int QuantityDefault { get; set; }
         public string ShippingMethodDefault { get; set; }
         public List<DeliveredPrice> DeliveredPrices { get; set; }
+
+        public override String ToString() {
+            return "Id: " + Id + "\n" +
+                "Product Id: " + ProductId + "\n" +
+                "Name: " + Name + "\n" +
+                "Description: " + Description + "\n" +
+                "ImageUrl: " + ImageUrl + "\n" +
+                "HasTemplate: " + HasTemplate + "\n" +
+                "QuantityDefault: " + QuantityDefault + "\n" +
+                "ShippingMethodDefault: " + ShippingMethodDefault + "\n";
+        }
     }
 }

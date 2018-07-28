@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 
 using pfl_assessment.Models;
-using pfl_assessment.Models.Products;
+using pfl_assessment.Models.Json.Products;
 
 namespace pfl_assessment.Controllers
 {
@@ -11,8 +11,6 @@ namespace pfl_assessment.Controllers
     {
         public async Task<ActionResult> Index()
         {
-            List<Product> productList = await ProductsApi.GetProducts();
-            ViewBag.Message = productList.Count + "<br/>" + productList.ToString();
             return View();
         }
 

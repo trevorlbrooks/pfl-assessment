@@ -159,10 +159,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ApiAccessor.cs" />
+    <Compile Include="Models\Json\Error.cs" />
     <Compile Include="Models\Json\JsonResponse.cs" />
+    <Compile Include="Models\Json\Meta.cs" />
     <Compile Include="Models\ProductsApi.cs" />
-    <Compile Include="Models\Products\DeliveredPrice.cs" />
-    <Compile Include="Models\Products\Product.cs" />
+    <Compile Include="Models\Json\Products\DeliveredPrice.cs" />
+    <Compile Include="Models\Json\Products\Product.cs" />
     <Compile Include="Models\Json\ResultsNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -247,6 +249,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Shared\_ProductTile.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

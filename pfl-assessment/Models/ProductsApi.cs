@@ -1,4 +1,5 @@
-﻿using pfl_assessment.Models.Products;
+﻿using pfl_assessment.Models.Json;
+using pfl_assessment.Models.Json.Products;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,11 @@ namespace pfl_assessment.Models
         public static async Task<List<Product>> GetProducts()
         {
             JsonResponse<List<Product>> products = await Api.Get<JsonResponse<List<Product>>>(ProductsEndpoint, null);
+            return products.Results.Data;
+        }
+
+        public static async Task<Product> GetProduct(int productId) {
+            JsonResponse<Product> products = await Api.Get<JsonResponse<Product>>(ProductsEndpoint + "/" + productId, null);
             return products.Results.Data;
         }
     }
