@@ -8,25 +8,22 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("PFL Assessment", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
+            @Html.ActionLink("PFL Assessment", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Store", "Index", "Store")</li>
-                    <li>@Html.ActionLink("Cart", "Index", "Cart")</li>
-                </ul>
+                <div class="navbar-nav">
+                    @Html.ActionLink("Home", "Index", "Home", new { @class = "nav-item nav-link" })
+                    @Html.ActionLink("Store", "Index", "Store", new { @class = "nav-item nav-link" })
+                    @Html.ActionLink("Cart", "Index", "Cart", new { @class = "nav-item nav-link" })
+                </div>
             </div>
         </div>
-    </div>
+    </nav>
     <div class="container body-content">
         @RenderBody()
         <hr />
