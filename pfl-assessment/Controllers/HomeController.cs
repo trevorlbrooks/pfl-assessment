@@ -1,10 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
-using pfl_assessment.Models;
 using pfl_assessment.Models.Json.Orders;
-using pfl_assessment.Models.Json.Products;
 
 namespace pfl_assessment.Controllers
 {

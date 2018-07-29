@@ -1,7 +1,7 @@
 ﻿@model pfl_assessment.Models.Json.Products.Product
 
     <h2>Order - @Model.Name</h2>
-    @using (Html.BeginForm("Add", "Cart"))
+    @using (Html.BeginForm("AddItem", "Cart"))
     {
         <table>
         @foreach (var field in Model.TemplateFields.Fieldlist.Field)

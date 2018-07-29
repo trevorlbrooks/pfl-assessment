@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace pfl_assessment.Models.Json.Orders
+﻿namespace pfl_assessment.Models.Json.Orders
 {
     public class Payment
     {

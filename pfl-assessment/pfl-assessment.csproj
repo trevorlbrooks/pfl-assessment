@@ -260,6 +260,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Shared\_ProductTile.cshtml" />
     <Content Include="Views\Store\Order.cshtml" />
+    <Content Include="Views\Shared\_ItemRowView.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

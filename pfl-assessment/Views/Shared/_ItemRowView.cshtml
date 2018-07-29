@@ -1,0 +1,14 @@
+﻿@model pfl_assessment.Models.Json.Orders.Item
+
+<div class="itemRow">
+    <div class="itemRowImage">
+        <img src="@Model.Product.ImageUrl" class="itemProductImage"/>
+    </div>
+    <div class="itemRowDetailsTopLine">
+        @Model.Product.Name - QTY: @Model.Quantity
+    </div>
+    <div class="itemRowDetailsBottomLine">
+        @Model.Product.Description
+    </div>
+    <div class="itemRowControls"></div>
+</div>
