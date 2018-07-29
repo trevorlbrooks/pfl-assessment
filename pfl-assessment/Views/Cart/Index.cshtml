@@ -1,7 +1,25 @@
-﻿@{
+﻿@using pfl_assessment.Models.Json.Orders
+@using pfl_assessment.Models.Json.Products
+@model List<Item>
+@{
     ViewData["Title"] = "Cart";
 }
 
-<div class="row">
-<h2>Cart Stub</h2>
-</div>
+
+<h2>Your Cart</h2>
+@if (Model.Count == 0)
+{
+    <div class="alert alert-info" role="alert">
+        Your cart is empty.
+        @Html.ActionLink("Start shopping!", "Index", "Store")
+    </div>
+}
+else
+{
+    <div class="d-md-flex flex-column">
+        @foreach (Item item in Model) {
+            @Html.Partial("_ItemRowView", item)
+        }
+    </div>
+}
+

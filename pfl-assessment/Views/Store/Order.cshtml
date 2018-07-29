@@ -8,6 +8,11 @@
         {
             foreach (var field in Model.TemplateFields.Fieldlist.Field)
             {
+                string required = "";
+                if (field.Required.Equals("Y"))
+                {
+                    required = "required";
+                }
                 <tr>
                     <td>
                         @Html.Label(field.Fieldname)
@@ -15,15 +20,15 @@
                     <td style="width:600px">
                         @if (field.Type.Equals("SINGLELINE"))
                         {
-                            @Html.TextBox(field.Fieldname, null, new { @style = "width:600px", @placeholder = field.Prompt[0].Text })
+                            @Html.TextBox(field.Fieldname, null, new { @style = "width:600px", @placeholder = field.Prompt[0].Text, @required = required})
                         }
                         else if (field.Type.Equals("MULTILINE"))
                         {
-                            @Html.TextArea(field.Fieldname, null, new { @style = "width:600px", @placeholder = field.Prompt[0].Text })
+                            @Html.TextArea(field.Fieldname, null, new { @style = "width:600px", @placeholder = field.Prompt[0].Text, @required = required })
                         }
                         else
                         {
-                            @Html.TextBox(field.Fieldname, null, new { @style = "width:600px", @placeholder = field.Prompt[0].Text })
+                            @Html.TextBox(field.Fieldname, null, new { @style = "width:600px", @placeholder = field.Prompt[0].Text, @required = required })
                         }
                     </td>
                 </tr>
@@ -36,7 +41,7 @@
                 @Html.Label("Image URL")
             </td>
             <td style="width:600px">
-                @Html.TextBox("ImageURL", "", new { @style = "width:600px", @placeholder = "Link to image" })
+                @Html.TextBox("imageURL", "", new { @style = "width:600px", @placeholder = "Link to image" })
             </td>
         </tr>
 

@@ -1,14 +1,26 @@
-﻿@model pfl_assessment.Models.Json.Orders.Item
+﻿@using pfl_assessment.Models.Json.Orders
+@model pfl_assessment.Models.Json.Orders.Item
 
 <div class="itemRow">
     <div class="itemRowImage">
-        <img src="@Model.Product.ImageUrl" class="itemProductImage"/>
+        <img src="@Model.Product.ImageUrl" class="itemProductImage" />
     </div>
     <div class="itemRowDetailsTopLine">
         @Model.Product.Name - QTY: @Model.Quantity
     </div>
     <div class="itemRowDetailsBottomLine">
-        @Model.Product.Description
+        @Model.Product.Description <br />
+        @if (Model.ItemFile != null)
+        {
+            <em>Image URL:</em> @Model.ItemFile <br />
+        }
+        @if (Model.Product.HasTemplate)
+        {
+            foreach (TemplateData data in Model.TemplateData)
+            {
+                <em>@data.TemplateDataName:</em> @data.TemplateDataValue <br />
+            }
+        }
     </div>
     <div class="itemRowControls"></div>
 </div>

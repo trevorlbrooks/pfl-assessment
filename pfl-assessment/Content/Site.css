@@ -14,7 +14,7 @@
     }
 
 .productTileImg {
-    max-height: 75%;
+    max-height: 60%;
     width: 100%;
 }
 
@@ -28,7 +28,10 @@
     }
 
 .itemRow {
+    display: grid;
     grid-template-columns: repeat(5, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
 }
 
 .itemRowImage {

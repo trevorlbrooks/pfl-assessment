@@ -1,6 +1,7 @@
 ﻿using pfl_assessment.Models;
 using pfl_assessment.Models.Json.Orders;
 using pfl_assessment.Models.Json.Products;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -11,7 +12,12 @@ namespace pfl_assessment.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            if (Session["cart"] == null)
+            {
+                Session["cart"] = new List<Item>();
+            }
+            List<Item> cart = (List<Item>)Session["cart"];
+            return View(cart);
         }
 
         [HttpPost]
@@ -29,6 +35,9 @@ namespace pfl_assessment.Controllers
                     Quantity = System.Convert.ToInt32(form["quantity"]),
                     TemplateData = new List<TemplateData>()
                 };
+                if (form["imageURL"] != null) {
+                    itemToAdd.ItemFile = new Uri(form["imageURL"]);
+                }
                 itemToAdd.Product = await ProductsApi.GetProduct(itemToAdd.ProductID);
                 if (itemToAdd.Product != null)
                 {

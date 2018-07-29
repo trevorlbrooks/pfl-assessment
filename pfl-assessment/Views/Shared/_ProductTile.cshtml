@@ -5,10 +5,7 @@
         <img class="card-img-top" src="@Model.ImageUrl" alt="Image of @Model.Name" />
     </div>
     <div class="card-body">
-        <h5 class="card-title">@Model.Name</h5>
-        <p class="card-text">
-            @Model.Description
-        </p>
+        <h5 class="card-title">@Model.Name.Substring(0, Math.Min(Model.Name.Length, 45))</h5>
         <button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("Order", "Store", new { @id = Model.ProductId})'">Customize</button>
     </div>
 </div>
