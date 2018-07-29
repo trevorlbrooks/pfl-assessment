@@ -1,3 +1,28 @@
 ﻿nav {
     margin-bottom: 2em;
 }
+.productTile {
+    margin: 5px;
+    width: 200px;
+    max-height: 400px;
+    /*align-self: flex-start;*/
+    align-content: space-between;
+}
+
+    .clickableProduct:hover {
+        background: #f2f2f2;
+    }
+
+.productTileImg {
+    max-height: 75%;
+    width: 100%;
+}
+
+    .productTileImg > .card-img-top {
+        max-height: 100%;
+        max-width: 100%;
+        width: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }

@@ -1,0 +1,22 @@
+﻿@model pfl_assessment.Models.Json.Products.Product
+
+<div class="card productTile">
+    <div class="productTileImg">
+        <img class="card-img-top" src="@Model.ImageUrl" alt="Image of @Model.Name" />
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name</h5>
+        <p class="card-text">
+            @Model.Description
+        </p>
+        @if (Model.HasTemplate)
+        {
+            <button type="button" class="btn btn-primary" onclick="window.location.href='/Store/Order/@Model.ProductId'">Customize</button>
+        }
+        else
+        {
+            <button type="button" class="btn btn-primary">Add to cart</button>
+        }
+    </div>
+</div>
+
