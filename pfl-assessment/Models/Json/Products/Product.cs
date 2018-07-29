@@ -19,7 +19,7 @@ namespace pfl_assessment.Models.Json.Products
         public int? QuantityIncrement { get; set; }
         public string ShippingMethodDefault { get; set; }
         public List<DeliveredPrice> DeliveredPrices { get; set; }
-        //public List<TemplateField> TemmplateFields { get; set; }
+        public TemplateFieldList TemplateFields { get; set; }
 
         public override String ToString() {
             return "Id: " + Id + "\n" +

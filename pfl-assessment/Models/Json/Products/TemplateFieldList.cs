@@ -5,8 +5,8 @@ using System.Web;
 
 namespace pfl_assessment.Models.Json.Products
 {
-    public class TemplateField
+    public class TemplateFieldList
     {
-        public List<Field> Field { get; set; }
+        public TemplateField Fieldlist { get; set; }
     }
 }

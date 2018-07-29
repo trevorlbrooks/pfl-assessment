@@ -15,5 +15,12 @@ namespace pfl_assessment.Controllers
             ViewData["products"] = products;
             return View();
         }
+
+        public async Task<ActionResult> Order(int id)
+        {
+            ViewData["locale"] = System.Globalization.CultureInfo.CurrentCulture;
+            Product product = await ProductsApi.GetProduct(id);
+            return View(product);
+        }
     }
 }

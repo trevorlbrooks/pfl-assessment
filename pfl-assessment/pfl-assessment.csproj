@@ -162,6 +162,8 @@
     <Compile Include="Models\Json\Error.cs" />
     <Compile Include="Models\Json\JsonResponse.cs" />
     <Compile Include="Models\Json\Meta.cs" />
+    <Compile Include="Models\Json\Products\Field.cs" />
+    <Compile Include="Models\Json\Products\TemplateFieldList.cs" />
     <Compile Include="Models\Json\Products\FieldPrompt.cs" />
     <Compile Include="Models\Json\Products\TemplateField.cs" />
     <Compile Include="Models\ProductsApi.cs" />
@@ -251,6 +253,7 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Shared\_ProductTile.cshtml" />
+    <Content Include="Views\Store\Order.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

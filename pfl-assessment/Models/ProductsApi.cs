@@ -20,8 +20,9 @@ namespace pfl_assessment.Models
         }
 
         public static async Task<Product> GetProduct(int productId) {
-            JsonResponse<Product> products = await Api.Get<JsonResponse<Product>>(ProductsEndpoint + "/" + productId, null);
-            return products.Results.Data;
+            JsonResponse<Product> product = await Api.Get<JsonResponse<Product>>(ProductsEndpoint + "/" + productId, null);
+            product.Results.Data.ProductId = product.Results.Data.Id;
+            return product.Results.Data;
         }
     }
 }
