@@ -162,6 +162,11 @@
     <Compile Include="Models\Json\Error.cs" />
     <Compile Include="Models\Json\JsonResponse.cs" />
     <Compile Include="Models\Json\Meta.cs" />
+    <Compile Include="Models\Json\Orders\Customer.cs" />
+    <Compile Include="Models\Json\Orders\Item.cs" />
+    <Compile Include="Models\Json\Orders\ItemShipment.cs" />
+    <Compile Include="Models\Json\Orders\OrderPayload.cs" />
+    <Compile Include="Models\Json\Orders\Shipment.cs" />
     <Compile Include="Models\Json\Products\Field.cs" />
     <Compile Include="Models\Json\Products\TemplateFieldList.cs" />
     <Compile Include="Models\Json\Products\FieldPrompt.cs" />
