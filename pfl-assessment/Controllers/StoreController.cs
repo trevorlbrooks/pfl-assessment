@@ -16,10 +16,13 @@ namespace pfl_assessment.Controllers
             return View();
         }
 
-        public async Task<ActionResult> Order(int id)
+        public async Task<ActionResult> Order(int? id)
         {
+            if (id == null) {
+                return RedirectToAction("Index");
+            }
             ViewData["locale"] = System.Globalization.CultureInfo.CurrentCulture;
-            Product product = await ProductsApi.GetProduct(id);
+            Product product = await ProductsApi.GetProduct(id.Value);
             return View(product);
         }
     }

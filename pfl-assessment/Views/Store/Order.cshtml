@@ -11,7 +11,18 @@
                     @Html.Label(field.Fieldname)
                 </td>
                 <td style="width:600px">
-                    @Html.TextBox(field.Fieldname, null, new { @style = "width:600px", @placeholder = field.Prompt[0].Text })
+                    @if (field.Type.Equals("SINGLELINE"))
+                    {
+                        @Html.TextBox(field.Fieldname, null, new { @style = "width:600px", @placeholder = field.Prompt[0].Text })
+                    }
+                    else if (field.Type.Equals("MULTILINE"))
+                    {
+                        @Html.TextArea(field.Fieldname, null, new { @style = "width:600px", @placeholder = field.Prompt[0].Text })
+                    }
+                    else
+                    {
+                        @Html.TextBox(field.Fieldname, null, new { @style = "width:600px", @placeholder = field.Prompt[0].Text })
+                    }
                 </td>
             </tr>
          }

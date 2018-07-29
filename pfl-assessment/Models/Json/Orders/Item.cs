@@ -12,6 +12,6 @@ namespace pfl_assessment.Models.Json.Orders
         public int Quantity {get; set;}
         public int ProductionDays {get; set;}
         public string PartnerItemReference {get; set;}
-        public URI ItemFile {get; set;}
+        public Uri ItemFile {get; set;}
     }
 }
