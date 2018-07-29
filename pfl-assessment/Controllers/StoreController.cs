@@ -23,7 +23,14 @@ namespace pfl_assessment.Controllers
             }
             ViewData["locale"] = System.Globalization.CultureInfo.CurrentCulture;
             Product product = await ProductsApi.GetProduct(id.Value);
-            return View(product);
+            if (product != null)
+            {
+                return View(product);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
     }
 }

@@ -168,6 +168,7 @@
     <Compile Include="Models\Json\Orders\OrderPayload.cs" />
     <Compile Include="Models\Json\Orders\Payment.cs" />
     <Compile Include="Models\Json\Orders\Shipment.cs" />
+    <Compile Include="Models\Json\Orders\TemplateData.cs" />
     <Compile Include="Models\Json\Products\Field.cs" />
     <Compile Include="Models\Json\Products\TemplateFieldList.cs" />
     <Compile Include="Models\Json\Products\FieldPrompt.cs" />

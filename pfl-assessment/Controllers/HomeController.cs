@@ -9,8 +9,6 @@ namespace pfl_assessment.Controllers
     {
         public ActionResult Index()
         {
-            Session["cart"] = new List<Item>();
-            ((List<Item>)Session["cart"]).Add(new Item());
             return View();
         }
 

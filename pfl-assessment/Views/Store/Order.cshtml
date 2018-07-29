@@ -1,31 +1,75 @@
 ﻿@model pfl_assessment.Models.Json.Products.Product
 
-    <h2>Order - @Model.Name</h2>
-    @using (Html.BeginForm("AddItem", "Cart"))
-    {
-        <table>
-        @foreach (var field in Model.TemplateFields.Fieldlist.Field)
+<h2>Order - @Model.Name</h2>
+@using (Html.BeginForm("AddItem", "Cart"))
+{
+    <table>
+        @if (Model.HasTemplate)
         {
-            <tr>
-                <td>
-                    @Html.Label(field.Fieldname)
-                </td>
-                <td style="width:600px">
-                    @if (field.Type.Equals("SINGLELINE"))
+            foreach (var field in Model.TemplateFields.Fieldlist.Field)
+            {
+                <tr>
+                    <td>
+                        @Html.Label(field.Fieldname)
+                    </td>
+                    <td style="width:600px">
+                        @if (field.Type.Equals("SINGLELINE"))
+                        {
+                            @Html.TextBox(field.Fieldname, null, new { @style = "width:600px", @placeholder = field.Prompt[0].Text })
+                        }
+                        else if (field.Type.Equals("MULTILINE"))
+                        {
+                            @Html.TextArea(field.Fieldname, null, new { @style = "width:600px", @placeholder = field.Prompt[0].Text })
+                        }
+                        else
+                        {
+                            @Html.TextBox(field.Fieldname, null, new { @style = "width:600px", @placeholder = field.Prompt[0].Text })
+                        }
+                    </td>
+                </tr>
+            }
+        }
+
+
+        <tr>
+            <td>
+                @Html.Label("Image URL")
+            </td>
+            <td style="width:600px">
+                @Html.TextBox("ImageURL", "", new { @style = "width:600px", @placeholder = "Link to image" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.Label("Quantity")
+            </td>
+            <td style="width:600px">
+                @{
+                    string quantityValidations = "";
+                    if (Model.QuantityMinimum != null)
                     {
-                        @Html.TextBox(field.Fieldname, null, new { @style = "width:600px", @placeholder = field.Prompt[0].Text })
-                    }
-                    else if (field.Type.Equals("MULTILINE"))
-                    {
-                        @Html.TextArea(field.Fieldname, null, new { @style = "width:600px", @placeholder = field.Prompt[0].Text })
+                        quantityValidations += "min=" + Model.QuantityMinimum.Value + " ";
                     }
                     else
                     {
-                        @Html.TextBox(field.Fieldname, null, new { @style = "width:600px", @placeholder = field.Prompt[0].Text })
+                        quantityValidations += "min=1 ";
                     }
-                </td>
-            </tr>
-         }
-        </table>
-        <button class="btn btn-primary" type="submit">Add to Cart</button>
-     }
+                    if (Model.QuantityMaximum != null)
+                    {
+                        quantityValidations += "max=" + Model.QuantityMinimum.Value + " ";
+                    }
+                    if (Model.QuantityIncrement != null)
+                    {
+                        quantityValidations += "step=" + Model.QuantityIncrement.Value + " ";
+                    }
+                }
+                <input type="number" value="@Model.QuantityDefault" @quantityValidations name="quantity" />
+
+            </td>
+        </tr>
+
+    </table>
+    <input type="hidden" value="@Model.ProductId" name="productId" />
+    <button class="btn btn-primary" type="submit">Add to Cart</button>
+}

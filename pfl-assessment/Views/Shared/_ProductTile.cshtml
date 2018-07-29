@@ -9,14 +9,7 @@
         <p class="card-text">
             @Model.Description
         </p>
-        @if (Model.HasTemplate)
-        {
-            <button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("Order", "Store", new { @id = Model.ProductId})'">Customize</button>
-        }
-        else
-        {
-            <button type="button" class="btn btn-primary">Add to cart</button>
-        }
+        <button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("Order", "Store", new { @id = Model.ProductId})'">Customize</button>
     </div>
 </div>
 
