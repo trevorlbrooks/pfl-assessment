@@ -18,5 +18,7 @@ namespace pfl_assessment.Models.Json.Orders
         public Product Product { get; set; }
         [JsonIgnore]
         public int ShipmentSequenceNumber { get; set; }
+        [JsonIgnore]
+        public string ShipmentType { get; set; }
     }
 }

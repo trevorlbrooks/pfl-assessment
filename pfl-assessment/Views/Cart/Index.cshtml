@@ -24,7 +24,7 @@ else
     </div>
     using (Html.BeginForm("EmptyCart", "Cart"))
     {
-        <input type="submit" name="submit" value="Empty Cart" />
+        <input type="submit" class="btn btn-danger" name="submit" value="Empty Cart" />
     }
 }
 
@@ -53,7 +53,7 @@ else
             @using (Html.BeginForm("Place", "Order"))
             {
                 @Html.Partial("_OrderPrice", pricedOrder)
-                <input type="submit" name="submit" value="Place order" />
+                <input type="submit" class="btn btn-primary" name="submit" value="Place order" />
             }
         </div>
     }

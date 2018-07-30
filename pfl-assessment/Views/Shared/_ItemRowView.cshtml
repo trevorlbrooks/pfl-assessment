@@ -1,7 +1,7 @@
 ﻿@using pfl_assessment.Models.Json.Orders
 @model pfl_assessment.Models.Json.Orders.Item
 
-<div class="itemRow">
+<div class="itemRow rounded border border-dark">
     <div class="itemRowImage">
         <img src="@Model.Product.ImageUrl" class="itemProductImage" />
     </div>
@@ -47,13 +47,14 @@
             <input type="number" value="@Model.Quantity" @quantityValidations name="quantity" />
 
             <input type="hidden" name="productId" value="@Model.ProductID" />
-            <input type="submit" name="submit" value="Update Quantity" />
+            <input type="submit" name="submit" class="btn btn-outline-primary" value="Update Quantity" />
         }
 
         @using (Html.BeginForm("RemoveItem", "Cart"))
         {
+            <br/>
             <input type="hidden" name="productId" value="@Model.ProductID" />
-            <input type="submit" name="submit" value="Remove Item" />
+            <input type="submit" class="btn btn-outline-danger" name="submit" value="Remove Item" />
         }
     </div>
 </div>
