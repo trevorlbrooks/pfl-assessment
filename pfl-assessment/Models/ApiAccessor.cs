@@ -48,8 +48,6 @@ namespace pfl_assessment.Models
 
         public async Task<T> Post<T,K>(String endpoint, K payload)
         {
-//            String pay = (JsonConvert.SerializeObject(payload));
-//            throw new Exception(pay);
             HttpResponseMessage response = await Client.PostAsJsonAsync(endpoint + "?apikey=" + ApiKey, payload);
             if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
             {

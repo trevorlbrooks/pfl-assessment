@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
-using Newtonsoft.Json;
 using pfl_assessment.Models;
 using pfl_assessment.Models.Json.Orders;
 
@@ -24,7 +21,8 @@ namespace pfl_assessment.Controllers
                 OrderPayload order = await OrderApi.GetOrder(id);
                 if (order != null)
                 {
-                    foreach (Item item in order.Items) {
+                    foreach (Item item in order.Items)
+                    {
                         item.Product = await ProductsApi.GetProduct(item.ProductID);
                     }
                     return View(order);
@@ -45,7 +43,7 @@ namespace pfl_assessment.Controllers
 
                     OrderPayload order = OrderApi.CreateOrderPayload(items, customer);
                     order = await OrderApi.PlaceOrder(order);
-                    return RedirectToAction("Success", "Order", new { @id = order.OrderNumber});
+                    return RedirectToAction("Success", "Order", new { @id = order.OrderNumber });
                 }
             }
             return RedirectToAction("Index");
