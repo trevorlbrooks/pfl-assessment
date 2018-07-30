@@ -8,7 +8,7 @@
         {
             foreach (var field in Model.TemplateFields.Fieldlist.Field)
             {
-                if (field.Required.Equals('Y') || field.Visible.Equals('Y'))
+                if (field.Required =='Y' || field.Visible == 'Y')
                 {
                     string required = "";
                     if (field.Required == 'Y')
@@ -34,7 +34,6 @@
                 }
             }
         }
-
 
         <tr>
             <td>
