@@ -22,14 +22,12 @@ else
             @Html.Partial("_ItemRowView", item)
         }
     </div>
+    <br />
     using (Html.BeginForm("EmptyCart", "Cart"))
     {
         <input type="submit" class="btn btn-danger" name="submit" value="Empty Cart" />
     }
 }
-
-
-<br />
 <br />
 <hr />
 @{
