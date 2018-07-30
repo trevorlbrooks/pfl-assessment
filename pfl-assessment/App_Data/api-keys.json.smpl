@@ -1,0 +1,10 @@
+{
+    "appSettings" : {
+        "api-key": "",
+        "api-user": "",
+        "api-pass": ""
+    },
+    "connectionStrings" : {
+        "api-url": ""
+    }
+}

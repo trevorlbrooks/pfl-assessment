@@ -177,6 +177,7 @@
     <Compile Include="Models\Json\Products\TemplateFieldList.cs" />
     <Compile Include="Models\Json\Products\FieldPrompt.cs" />
     <Compile Include="Models\Json\Products\TemplateField.cs" />
+    <Compile Include="Models\OrderApi.cs" />
     <Compile Include="Models\PriceApi.cs" />
     <Compile Include="Models\ProductsApi.cs" />
     <Compile Include="Models\Json\Products\DeliveredPrice.cs" />
@@ -220,6 +221,7 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="App_Data\api-keys.json" />
+    <None Include="App_Data\api-keys.json.smpl" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -268,10 +270,10 @@
     <Content Include="Views\Store\Order.cshtml" />
     <Content Include="Views\Shared\_ItemRowView.cshtml" />
     <Content Include="Views\Shared\_CustomerShipmentForm.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\_Order.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Order\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />

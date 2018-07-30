@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+
+using pfl_assessment.Models;
+using pfl_assessment.Models.Json.Orders;
 
 namespace pfl_assessment.Controllers
 {
@@ -13,9 +17,17 @@ namespace pfl_assessment.Controllers
             return View();
         }
 
-        public ActionResult Lookup(int? id)
+        public async Task<ActionResult> Lookup(int? id)
         {
-            return null;
+            if (id != null)
+            {
+                OrderPayload order = await OrderApi.GetOrder(id.Value);
+                if (order != null)
+                {
+                    return View(order);
+                }
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
