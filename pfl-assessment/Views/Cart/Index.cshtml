@@ -23,3 +23,16 @@ else
     </div>
 }
 
+@{
+    if (ViewData["customer"] == null)
+    {
+        ViewData["Customer"] = new Customer();
+    }
+    Customer customer = (Customer)ViewData["Customer"];
+}
+@Html.Partial("_CustomerShipmentForm", customer)
+
+@using (Html.BeginForm("Place", "Order"))
+{
+
+}

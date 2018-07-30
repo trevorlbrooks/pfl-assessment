@@ -1,0 +1,20 @@
+﻿@model pfl_assessment.Models.Json.Orders.Customer
+@using (Html.BeginForm("UpdateAddress", "Cart"))
+{
+    <h5>Your Info</h5>
+    <div class="customerInfo">
+        <input type="text" name="firstName" style="width:450px" placeholder="First Name" value="@Model.FirstName" required />
+        <input type="text" name="lastName" style="width:450px" placeholder="Last Name" value="@Model.LastName" required />
+        <input type="text" name="companyName" style="width:450px" placeholder="Company Name" value="@Model.CompanyName" required />
+        <input type="text" name="address1" style="width:450px" placeholder="Address" value="@Model.Address1" required />
+        <input type="text" name="address2" style="width:450px" placeholder="Address Line 2 (Optional)" value="@Model.Address2" />
+        <input type="text" name="city" style="width:450px" placeholder="City" value="@Model.City" required />
+        <input type="text" name="state" style="width:450px" placeholder="State" value="@Model.State" required />
+        <input type="text" name="postalCode" style="width:450px" placeholder="Postal Code (ZIP)" value="@Model.PostalCode" required />
+        <input type="text" name="countryCode" style="width:450px" placeholder="Country or Country Code" value="@Model.PostalCode" required />
+        <input type="email" name="email" style="width:450px" placeholder="Email" value="@Model.Email" required />
+        <input type="tel" name="phone" style="width:450px" placeholder="Phone" value="@Model.Phone" required />
+
+        <input type="submit" name="submit" value="Update Address and Pricing" />
+    </div>
+}

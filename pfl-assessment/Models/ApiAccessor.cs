@@ -35,6 +35,7 @@ namespace pfl_assessment.Models
                 new AuthenticationHeaderValue("Basic",  Authorization);
         }
 
+        //Come back and add queryParam support if needed by the api.
         public async Task<T> Get<T>(String endpoint, List<String> queryParams) {
             HttpResponseMessage response = await Client.GetAsync(endpoint + "?apikey=" + ApiKey);
             if (response.IsSuccessStatusCode)
@@ -43,5 +44,13 @@ namespace pfl_assessment.Models
             }
             return default(T);
         }
+
+        public async Task<T> Post<T,K>(String endpoint, K payload)
+        {
+            HttpResponseMessage response = await Client.PostAsJsonAsync(endpoint, payload);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsAsync<T>();
+        }
+
     }
 }

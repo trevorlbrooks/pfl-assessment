@@ -10,13 +10,23 @@ namespace pfl_assessment.Controllers
 {
     public class CartController : Controller
     {
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             if (Session["cart"] == null)
             {
                 Session["cart"] = new List<Item>();
             }
             List<Item> cart = (List<Item>)Session["cart"];
+
+            OrderPayload pricedOrder = null;
+            if (cart.Count > 0 && Session["customer"] != null)
+            {
+                Customer customer = (Customer)Session["customer"];
+                OrderPayload order = CreateOrderPayload(cart, customer);
+                pricedOrder = await PriceApi.PriceOrder(order);
+                ViewData["pricedOrder"] = pricedOrder;
+            }
+            ViewData["Customer"] = Session["customer"];
             return View(cart);
         }
 
@@ -31,11 +41,12 @@ namespace pfl_assessment.Controllers
             {
                 Item itemToAdd = new Item
                 {
-                    ProductID = System.Convert.ToInt32(form["productId"]),
-                    Quantity = System.Convert.ToInt32(form["quantity"]),
+                    ProductID = Convert.ToInt32(form["productId"]),
+                    Quantity = Convert.ToInt32(form["quantity"]),
                     TemplateData = new List<TemplateData>()
                 };
-                if (form["imageURL"] != null) {
+                if (form["imageURL"] != null)
+                {
                     itemToAdd.ItemFile = new Uri(form["imageURL"]);
                 }
                 itemToAdd.Product = await ProductsApi.GetProduct(itemToAdd.ProductID);
@@ -65,10 +76,12 @@ namespace pfl_assessment.Controllers
             {
                 Session["cart"] = new List<Item>();
             }
-            int? index = System.Convert.ToInt32(form["index"]);
-            if (index != null) {
+            int? index = Convert.ToInt32(form["index"]);
+            if (index != null)
+            {
                 List<Item> cart = (List<Item>)Session["cart"];
-                if (cart.Count > index) {
+                if (cart.Count > index)
+                {
                     cart.RemoveAt(index.Value);
                 }
             }
@@ -76,14 +89,16 @@ namespace pfl_assessment.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateQuantity(FormCollection form) {
+        public ActionResult UpdateQuantity(FormCollection form)
+        {
             if (Session["cart"] == null)
             {
                 Session["cart"] = new List<Item>();
             }
-            int? index = System.Convert.ToInt32(form["index"]);
-            int? quantity = System.Convert.ToInt32(form["quantity"]);
-            if (index != null && quantity != null) {
+            int? index = Convert.ToInt32(form["index"]);
+            int? quantity = Convert.ToInt32(form["quantity"]);
+            if (index != null && quantity != null)
+            {
                 List<Item> cart = (List<Item>)Session["cart"];
                 if (cart.Count > index)
                 {
@@ -98,6 +113,66 @@ namespace pfl_assessment.Controllers
         {
             Session["cart"] = new List<Item>();
             return RedirectToAction("Index", "Store");
+        }
+
+        [HttpPost]
+        public ActionResult UpdateAddress(FormCollection form)
+        {
+            Session["customer"] = new Customer
+            {
+                FirstName = form["firstName"],
+                LastName = form["lastName"],
+                CompanyName = form["companyName"],
+                Address1 = form["address1"],
+                Address2 = form["address2"],
+                City = form["city"],
+                State = form["state"],
+                PostalCode = form["postalCode"],
+                CountryCode = form["countryCode"],
+                Email = form["email"],
+                Phone = form["phone"]
+            };
+            return RedirectToAction("Index");
+        }
+
+        //Populates one-indexed item sequences on the cart for pricing and ordering.
+        private static void PopulateItemSequenceNumbers(List<Item> itemList)
+        {
+            for (int i = 0; i < itemList.Count; i++)
+            {
+                itemList[i].ItemSequenceNumber = i + 1;
+            }
+        }
+
+        //Creates the order payload for both pricing and ordering requests
+        private static OrderPayload CreateOrderPayload(List<Item> items, Customer customer)
+        {
+            List<Shipment> shipments = new List<Shipment>();
+            //FIXME: Allow for multiple shipments
+            shipments.Add(new Shipment
+            {
+                FirstName = customer.FirstName,
+                LastName = customer.LastName,
+                CompanyName = customer.CompanyName,
+                Address1 = customer.Address1,
+                Address2 = customer.Address2,
+                City = customer.City,
+                State = customer.State,
+                PostalCode = customer.PostalCode,
+                CountryCode = customer.CountryCode,
+                Phone = customer.Phone,
+                //FIXME: Add these as options / generate seq.
+                ShipmentSequenceNumber = 1,
+                ShippingMethod = "FDXG",
+                IMBSerialNumber = null
+            });
+            return new OrderPayload
+            {
+                Items = items,
+                OrderCustomer = customer,
+                PartnerOrderReference = Guid.NewGuid().ToString(),
+                Shipments = shipments
+            };
         }
     }
 }

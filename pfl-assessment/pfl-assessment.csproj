@@ -169,10 +169,13 @@
     <Compile Include="Models\Json\Orders\Payment.cs" />
     <Compile Include="Models\Json\Orders\Shipment.cs" />
     <Compile Include="Models\Json\Orders\TemplateData.cs" />
+    <Compile Include="Models\Json\Price\ItemPrice.cs" />
+    <Compile Include="Models\Json\Price\OrderPrice.cs" />
     <Compile Include="Models\Json\Products\Field.cs" />
     <Compile Include="Models\Json\Products\TemplateFieldList.cs" />
     <Compile Include="Models\Json\Products\FieldPrompt.cs" />
     <Compile Include="Models\Json\Products\TemplateField.cs" />
+    <Compile Include="Models\PriceApi.cs" />
     <Compile Include="Models\ProductsApi.cs" />
     <Compile Include="Models\Json\Products\DeliveredPrice.cs" />
     <Compile Include="Models\Json\Products\Product.cs" />
@@ -262,6 +265,7 @@
     <Content Include="Views\Shared\_ProductTile.cshtml" />
     <Content Include="Views\Store\Order.cshtml" />
     <Content Include="Views\Shared\_ItemRowView.cshtml" />
+    <Content Include="Views\Shared\_CustomerShipmentForm.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
