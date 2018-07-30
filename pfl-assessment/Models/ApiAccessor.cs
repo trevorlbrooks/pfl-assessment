@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Net.Http;
@@ -47,7 +48,14 @@ namespace pfl_assessment.Models
 
         public async Task<T> Post<T,K>(String endpoint, K payload)
         {
-            HttpResponseMessage response = await Client.PostAsJsonAsync(endpoint, payload);
+//            String pay = (JsonConvert.SerializeObject(payload));
+//            throw new Exception(pay);
+            HttpResponseMessage response = await Client.PostAsJsonAsync(endpoint + "?apikey=" + ApiKey, payload);
+            if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+            {
+                T obj = await response.Content.ReadAsAsync<T>();
+                throw new Exception("Error. Response was: " + JsonConvert.SerializeObject(obj));
+            }
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsAsync<T>();
         }

@@ -154,6 +154,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -172,6 +173,7 @@
     <Compile Include="Models\Json\Price\ItemPrice.cs" />
     <Compile Include="Models\Json\Price\OrderPrice.cs" />
     <Compile Include="Models\Json\Products\Field.cs" />
+    <Compile Include="Models\Json\Products\ProductionSpeed.cs" />
     <Compile Include="Models\Json\Products\TemplateFieldList.cs" />
     <Compile Include="Models\Json\Products\FieldPrompt.cs" />
     <Compile Include="Models\Json\Products\TemplateField.cs" />
@@ -267,7 +269,9 @@
     <Content Include="Views\Shared\_ItemRowView.cshtml" />
     <Content Include="Views\Shared\_CustomerShipmentForm.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Order\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />

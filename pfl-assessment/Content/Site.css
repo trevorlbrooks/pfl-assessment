@@ -11,20 +11,20 @@
 }
 
 .itemRowImage {
-    grid-column: 1 / 2;
+    grid-column: 1;
     grid-row: 1/3
 }
 
-.itemRowDetailsTop, .itemRowDetailsBottom {
+.itemRowDetailsTopLine, .itemRowDetailsBottomLine {
     grid-column: 2 / 5
 }
 
-.itemRowDetailsTop {
-    grid-row: 1/2;
+.itemRowDetailsTopLine {
+    grid-row: 1;
 }
 
-.itemRowDetailsBottom {
-    grid-row: 2/3;
+.itemRowDetailsBottomLine {
+    grid-row: 2;
 }
 
 .itemRowControls {

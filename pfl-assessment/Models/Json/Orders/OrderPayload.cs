@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using pfl_assessment.Models.Json.Price;
 
 namespace pfl_assessment.Models.Json.Orders
 {
@@ -11,5 +12,6 @@ namespace pfl_assessment.Models.Json.Orders
         public List<Shipment> Shipments { get; set; }
         public List<Payment> Payments { get; set; }
         public List<ItemShipment> ItemShipments { get; set; }
+        public OrderPrice OrderPrices { get; set; }
     }
 }

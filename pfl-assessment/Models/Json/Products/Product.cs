@@ -18,16 +18,6 @@ namespace pfl_assessment.Models.Json.Products
         public string ShippingMethodDefault { get; set; }
         public List<DeliveredPrice> DeliveredPrices { get; set; }
         public TemplateFieldList TemplateFields { get; set; }
-
-        public override String ToString() {
-            return "Id: " + Id + "\n" +
-                "Product Id: " + ProductId + "\n" +
-                "Name: " + Name + "\n" +
-                "Description: " + Description + "\n" +
-                "ImageUrl: " + ImageUrl + "\n" +
-                "HasTemplate: " + HasTemplate + "\n" +
-                "QuantityDefault: " + QuantityDefault + "\n" +
-                "ShippingMethodDefault: " + ShippingMethodDefault + "\n";
-        }
+        public List<ProductionSpeed> ProductionSpeeds { get; set; }
     }
 }

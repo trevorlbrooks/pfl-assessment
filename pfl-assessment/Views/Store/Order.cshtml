@@ -23,11 +23,11 @@
                             
                             @if (field.Type.Equals("MULTILINE"))
                             {
-                                <textarea name="@field.Fieldname" style = "width:600px" placeholder="@field.Prompt[0].Text" @required></textarea>
+                                <textarea name="@field.Htmlfieldname" style = "width:600px" placeholder="@field.Prompt[0].Text" @required></textarea>
                             }
                             else
                             {
-                                <input type="text" name="field.Fieldname" style = "width:600px" placeholder="@field.Prompt[0].Text" @required />
+                                <input type="text" name="@field.Htmlfieldname" style = "width:600px" placeholder="@field.Prompt[0].Text" @required />
                             }
                         </td>
                     </tr>
@@ -61,7 +61,7 @@
                     }
                     if (Model.QuantityMaximum != null)
                     {
-                        quantityValidations += "max=" + Model.QuantityMinimum.Value + " ";
+                        quantityValidations += "max=" + Model.QuantityMaximum.Value + " ";
                     }
                     if (Model.QuantityIncrement != null)
                     {
