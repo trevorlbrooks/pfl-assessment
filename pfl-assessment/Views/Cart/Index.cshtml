@@ -41,32 +41,7 @@ else
                 <h5>Your Price</h5>
                 @using (Html.BeginForm("Place", "Order"))
                 {
-                    <table>
-                        <tr>
-                            <td>
-                                @Html.Label("Printing Price")
-                            </td>
-                            <td>
-                                @pricedOrder.OrderPrices.PrintPriceTotal
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                @Html.Label("Shipping Price")
-                            </td>
-                            <td>
-                                @pricedOrder.OrderPrices.ShipPriceTotal
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                @Html.Label("Order Total")
-                            </td>
-                            <td>
-                                @pricedOrder.OrderPrices.OrderTotalPrice
-                            </td>
-                        </tr>
-                    </table>
+                    @Html.Partial("_OrderPrice", pricedOrder)
                     <input type="submit" name="submit" value="Place order" />
                 }
             </div>

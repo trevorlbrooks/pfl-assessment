@@ -1,0 +1,28 @@
+﻿@model pfl_assessment.Models.Json.Orders.OrderPayload
+
+<table>
+    <tr>
+        <td>
+            @Html.Label("Printing Price")
+        </td>
+        <td>
+            @Model.OrderPrices.PrintPriceTotal
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.Label("Shipping Price")
+        </td>
+        <td>
+            @Model.OrderPrices.ShipPriceTotal
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.Label("Order Total")
+        </td>
+        <td>
+            @Model.OrderPrices.OrderTotalPrice
+        </td>
+    </tr>
+</table>

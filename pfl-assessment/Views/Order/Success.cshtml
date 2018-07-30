@@ -1,0 +1,14 @@
+﻿@model pfl_assessment.Models.Json.Orders.OrderPayload
+
+@{
+    ViewBag.Title = "Order Lookup";
+}
+
+<h2>Order Placed</h2>
+
+<div class="alert alert-success" role="alert">
+    Your order number is: @Model.OrderNumber.
+</div>
+<br />
+@Html.ActionLink("Return to the store!", "Index", "Store")
+
