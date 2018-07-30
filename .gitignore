@@ -262,3 +262,4 @@ __pycache__/
 
 # API Secrets
 pfl-assessment/App_Data/api-keys.json
+/pfl-assessment/Properties/PublishProfiles/pfl-assessment20180730120757 - Web Deploy.pubxml

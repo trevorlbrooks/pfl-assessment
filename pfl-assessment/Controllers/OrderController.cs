@@ -43,6 +43,8 @@ namespace pfl_assessment.Controllers
 
                     OrderPayload order = OrderApi.CreateOrderPayload(items, customer);
                     order = await OrderApi.PlaceOrder(order);
+                    //Clear cart
+                    Session["cart"] = new List<Item>();
                     return RedirectToAction("Success", "Order", new { @id = order.OrderNumber });
                 }
             }
