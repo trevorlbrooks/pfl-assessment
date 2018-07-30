@@ -22,5 +22,38 @@
             }
         }
     </div>
-    <div class="itemRowControls"></div>
+    <div class="itemRowControls">
+        @using (Html.BeginForm("UpdateQuantity", "Cart"))
+        {
+
+            string quantityValidations = "";
+            if (Model.Product.QuantityMinimum != null)
+            {
+                quantityValidations += "min=" + Model.Product.QuantityMinimum.Value + " ";
+            }
+            else
+            {
+                quantityValidations += "min=1 ";
+            }
+            if (Model.Product.QuantityMaximum != null)
+            {
+                quantityValidations += "max=" + Model.Product.QuantityMaximum.Value + " ";
+            }
+            if (Model.Product.QuantityIncrement != null)
+            {
+                quantityValidations += "step=" + Model.Product.QuantityIncrement.Value + " ";
+            }
+
+            <input type="number" value="@Model.Quantity" @quantityValidations name="quantity" />
+
+            <input type="hidden" name="productId" value="@Model.ProductID" />
+            <input type="submit" name="submit" value="Update Quantity" />
+        }
+
+        @using (Html.BeginForm("RemoveItem", "Cart"))
+        {
+            <input type="hidden" name="productId" value="@Model.ProductID" />
+            <input type="submit" name="submit" value="Remove Item" />
+        }
+    </div>
 </div>

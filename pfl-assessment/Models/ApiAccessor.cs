@@ -7,7 +7,6 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace pfl_assessment.Models
 {
     public class ApiAccessor
@@ -17,8 +16,6 @@ namespace pfl_assessment.Models
         private static String ApiKey;
         private static String Authorization;
         private static String ApiUrl;
-
-        
 
         private ApiAccessor() {
             ApiKey = ConfigurationManager.AppSettings["api-key"];

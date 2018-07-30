@@ -43,6 +43,7 @@ namespace pfl_assessment.Models
             }
         }
 
+        //Vanity call, test api does not require payment info.
         public static OrderPayload CreateOrderPayload(List<Item> items, Customer customer)
         {
             return CreateOrderPayload(items, customer, null);

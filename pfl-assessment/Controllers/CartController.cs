@@ -76,13 +76,15 @@ namespace pfl_assessment.Controllers
             {
                 Session["cart"] = new List<Item>();
             }
-            int? index = Convert.ToInt32(form["index"]);
-            if (index != null)
+            int? productId = Convert.ToInt32(form["productId"]);
+            if (productId != null)
             {
                 List<Item> cart = (List<Item>)Session["cart"];
-                if (cart.Count > index)
-                {
-                    cart.RemoveAt(index.Value);
+                foreach (Item item in cart) {
+                    if (item.ProductID == productId) {
+                        cart.Remove(item);
+                        break;
+                    }
                 }
             }
             return RedirectToAction("Index");
